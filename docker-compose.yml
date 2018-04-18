@@ -1,0 +1,44 @@
+version: '3'
+services:
+    zoo:
+        build: ./zoo
+        ports:
+            - 8082:8080
+            - 2181:2181
+    rabbit:
+       image: rabbitmq
+       ports:
+        - 5672:5672
+        - 15672:15672 
+    redis:
+        image: redis
+        ports:
+            - 6379:6379
+    service:
+        environment:
+            - JPDA_ADDRESS=8000
+            - JPDA_TRANSPORT=dt_socket
+            - JPDA_SUSPEND=y
+        build: .
+        ports:
+            - 20880:20880 
+            - 20881:20881
+            - 8000:8000
+    web:
+        environment:
+            - JPDA_ADDRESS=8000
+            - JPDA_TRANSPORT=dt_socket
+            - JPDA_SUSPEND=y
+        build: ./web
+        ports:
+            - 8083:8080
+            - 8001:8000
+    job:
+        environment:
+            - JPDA_ADDRESS=8000
+            - JPDA_TRANSPORT=dt_socket
+            - JPDA_SUSPEND=y
+        build: ./job
+        ports:
+            - 8084:8080
+            - 8003:8000

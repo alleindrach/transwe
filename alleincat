@@ -1,0 +1,7 @@
+FROM tomcat
+MAINTAINER allein <alleindrach@gmail.com>
+
+COPY user/target/user-0.0.1 /usr/local/tomcat/webapps/user
+CMD /usr/local/zookeeper/bin/zkServer.sh start && /usr/local/tomcat/bin/startup.sh && tail -f /usr/local/tomcat/logs/catalina.out
+
+

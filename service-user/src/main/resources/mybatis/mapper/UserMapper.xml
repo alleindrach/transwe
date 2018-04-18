@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.transwe.serivce.user.dao.UserDAO" >
+    <resultMap id="userResultMap" type="com.transwe.entity.user.UserEntity">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="phone" column="phone"/>
+        <result property="mail" column="mail"/>
+        <result property="licencePic" column="licence_pic"/>
+        <result property="registerTime" column="register_time"/>
+        <result property="registerTime" column="register_time"/>
+        <result property="userTypeEnum" column="user_type" typeHandler="com.transwe.typehandler.EnumTypeHandler"/>
+        <result property="userStateEnum" column="user_state" typeHandler="com.transwe.typehandler.EnumTypeHandler"/>
+
+        <association property="roleEntity" javaType="com.transwe.entity.user.RoleEntity">
+            <result property="id" column="role_id"/>
+            <result property="name" column="role_name"/>
+            <result property="desc" column="role_desc"/>
+
+            <collection property="permissionList" ofType="com.transwe.entity.user.PermissionEntity">
+                <result property="id" column="permission_id"/>
+                <result property="permission" column="permission"/>
+                <result property="desc" column="permission_desc"/>
+            </collection>
+        </association>
+    </resultMap>
+
+
+    <select id="login" resultMap="userResultMap">
+
+        SELECT
+        user.id as id,
+        username,
+        phone,
+        mail,
+        register_time,
+        user_type,
+        user_state,
+        role.id as role_id,
+        role.name as role_name,
+        role.desc as role_desc,
+        permission.id as permission_id,
+        permission.permission as permission,
+        permission.desc as permission_desc
+        FROM
+        sys_user as user
+        LEFT JOIN
+        sys_role as role
+        ON
+        user.role_id = role.id
+
+        LEFT JOIN
+        sys_role_permission as role_permission
+        ON
+        role_permission.role_id = role.id
+
+        LEFT JOIN
+        sys_permission as permission
+        ON
+        role_permission.permission_id = permission.id
+
+        <where>
+            password = SHA2(CONCAT(#{loginRequest.password},user.password_salt), 224)
+                AND (
+            <if test="loginRequest.username != null">
+                username = #{loginRequest.username}
+            </if>
+            <if  test="loginRequest.phone != null">
+                OR
+                phone = #{loginRequest.phone}
+            </if>
+            <if test="loginRequest.mail != null">
+                OR
+                mail = #{loginRequest.mail}
+            </if>
+            )
+          limit 1
+        </where>
+
+    </select>
+
+    <update id="updateEmail">
+        UPDATE sys_user
+        <set>
+            mail=#{updateReq.mail}
+        </set>
+        WHERE id = #{updateReq.userId}
+    </update>
+    <update id="updateRole">
+        UPDATE sys_user
+        <set>
+            role_id=#{updateReq.role}
+        </set>
+        WHERE id = #{updateReq.userId}
+    </update>
+</mapper>

@@ -1,0 +1,9 @@
+FROM tomcat
+MAINTAINER allein <alleindrach@gmail.com>
+
+COPY zookeeper-3.4.10 /usr/local/zookeeper
+COPY dubbo-admin-2.0.0 /usr/local/tomcat/webapps/dubbo-admin
+#COPY user/target/user-0.0.1 /usr/local/tomcat/webapps/user
+CMD /usr/local/zookeeper/bin/zkServer.sh start && /usr/local/tomcat/bin/catalina.sh run
+
+

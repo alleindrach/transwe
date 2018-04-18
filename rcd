@@ -1,0 +1,9 @@
+docker run --name alleincontroller -it --rm \
+  -e JPDA_ADDRESS=8000 \
+  -e JPDA_TRANSPORT=dt_socket \
+  -e JPDA_SUSPEND=y \
+  -p 8083:8080 \
+  -p 9000:8000 \
+  alleincontroller \
+  /usr/local/tomcat/bin/catalina.sh jpda run
+
