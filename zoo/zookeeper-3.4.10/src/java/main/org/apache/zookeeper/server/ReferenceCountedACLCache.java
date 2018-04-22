@@ -152,7 +152,7 @@ public class ReferenceCountedACLCache {
         }
 
         if (!longKeyMap.containsKey(acl)) {
-            LOG.info("Ignoring acl " + acl + " as it does not exist in the cache");
+            LOG.info("Ignoring acl " + acl + " as it does not exist in the provider");
             return;
         }
 
@@ -170,7 +170,7 @@ public class ReferenceCountedACLCache {
         }
 
         if (!longKeyMap.containsKey(acl)) {
-            LOG.info("Ignoring acl " + acl + " as it does not exist in the cache");
+            LOG.info("Ignoring acl " + acl + " as it does not exist in the provider");
             return;
         }
 

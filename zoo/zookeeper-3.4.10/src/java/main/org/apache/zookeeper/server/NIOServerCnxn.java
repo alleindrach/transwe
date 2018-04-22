@@ -365,7 +365,7 @@ public class NIOServerCnxn extends ServerCnxn {
             // expecting close to log session closure
             close();
         } catch (EndOfStreamException e) {
-            LOG.warn("caught end of stream exception",e); // tell user why
+            LOG.warn("caught end of stream exception",e); // tell provider why
 
             // expecting close to log session closure
             close();

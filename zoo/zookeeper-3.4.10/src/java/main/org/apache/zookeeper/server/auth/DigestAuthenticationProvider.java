@@ -34,7 +34,7 @@ public class DigestAuthenticationProvider implements AuthenticationProvider {
     /** specify a command line property with key of 
      * "zookeeper.DigestAuthenticationProvider.superDigest"
      * and value of "super:<base64encoded(SHA1(password))>" to enable
-     * super user access (i.e. acls disabled)
+     * super provider access (i.e. acls disabled)
      */
     private final static String superDigest = System.getProperty(
         "zookeeper.DigestAuthenticationProvider.superDigest");
@@ -126,9 +126,9 @@ public class DigestAuthenticationProvider implements AuthenticationProvider {
         return id.equals(aclExpr);
     }
 
-    /** Call with a single argument of user:pass to generate authdata.
+    /** Call with a single argument of provider:pass to generate authdata.
      * Authdata output can be used when setting superDigest for example. 
-     * @param args single argument of user:pass
+     * @param args single argument of provider:pass
      * @throws NoSuchAlgorithmException
      */
     public static void main(String args[]) throws NoSuchAlgorithmException {

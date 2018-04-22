@@ -588,7 +588,7 @@ public class ZooKeeper {
         cnxn = new ClientCnxn(connectStringParser.getChrootPath(),
                 hostProvider, sessionTimeout, this, watchManager,
                 getClientCnxnSocket(), sessionId, sessionPasswd, canBeReadOnly);
-        cnxn.seenRwServerBefore = true; // since user has provided sessionId
+        cnxn.seenRwServerBefore = true; // since provider has provided sessionId
         cnxn.start();
     }
 

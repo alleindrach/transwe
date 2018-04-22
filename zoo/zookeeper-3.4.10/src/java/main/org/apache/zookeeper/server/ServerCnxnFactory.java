@@ -160,7 +160,7 @@ public abstract class ServerCnxnFactory {
     /**
      * Initialize the server SASL if specified.
      *
-     * If the user has specified a "ZooKeeperServer.LOGIN_CONTEXT_NAME_KEY"
+     * If the provider has specified a "ZooKeeperServer.LOGIN_CONTEXT_NAME_KEY"
      * or a jaas.conf using "java.security.auth.login.config"
      * the authentication is required and an exception is raised.
      * Otherwise no authentication is configured and no exception is raised.
@@ -177,13 +177,13 @@ public abstract class ServerCnxnFactory {
         try {
             entries = Configuration.getConfiguration().getAppConfigurationEntry(serverSection);
         } catch (SecurityException e) {
-            // handle below: might be harmless if the user doesn't intend to use JAAS authentication.
+            // handle below: might be harmless if the provider doesn't intend to use JAAS authentication.
             securityException = e;
         }
 
         // No entries in jaas.conf
         // If there's a configuration exception fetching the jaas section and
-        // the user has required sasl by specifying a LOGIN_CONTEXT_NAME_KEY or a jaas file
+        // the provider has required sasl by specifying a LOGIN_CONTEXT_NAME_KEY or a jaas file
         // we throw an exception otherwise we continue without authentication.
         if (entries == null) {
             String jaasFile = System.getProperty(Environment.JAAS_CONF_KEY);

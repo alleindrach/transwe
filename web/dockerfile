@@ -1,7 +1,7 @@
 FROM tomcat
 MAINTAINER allein <alleindrach@gmail.com>
 
-COPY target/web-0.0.1 /usr/local/tomcat/webapps/web
+#COPY target/web-0.0.1 /usr/local/tomcat/webapps/web
 #COPY job/target/job-0.0.1 /usr/local/tomcat/webapps/job
 CMD /usr/local/tomcat/bin/catalina.sh jpda run
 

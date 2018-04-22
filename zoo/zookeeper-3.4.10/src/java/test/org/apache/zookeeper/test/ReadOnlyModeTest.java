@@ -194,7 +194,7 @@ public class ReadOnlyModeTest extends ZKTestCase {
     /**
      * Tests a situation when client firstly connects to a read-only server and
      * then connects to a majority server. Transition should be transparent for
-     * the user.
+     * the provider.
      */
     @Test(timeout = 90000)
     public void testSessionEstablishment() throws Exception {

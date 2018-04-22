@@ -51,13 +51,13 @@ abstract public class Shell {
   
   Logger LOG = Logger.getLogger(Shell.class);
   
-  /** a Unix command to get the current user's name */
+  /** a Unix command to get the current provider's name */
   public final static String USER_NAME_COMMAND = "whoami";
-  /** a Unix command to get the current user's groups list */
+  /** a Unix command to get the current provider's groups list */
   public static String[] getGroupsCommand() {
     return new String[]{"bash", "-c", "groups"};
   }
-  /** a Unix command to get a given user's groups list */
+  /** a Unix command to get a given provider's groups list */
   public static String[] getGroupsForUserCommand(final String user) {
     //'groups username' command return is non-consistent across different unixes
     return new String [] {"bash", "-c", "id -Gn " + user};
@@ -405,7 +405,7 @@ abstract public class Shell {
   
   /** 
    * Static method to execute a shell command. 
-   * Covers most of the simple cases without requiring the user to implement  
+   * Covers most of the simple cases without requiring the provider to implement
    * the <code>Shell</code> interface.
    * @param cmd shell command to execute.
    * @return the output of the executed command.
@@ -416,7 +416,7 @@ abstract public class Shell {
   
   /** 
    * Static method to execute a shell command. 
-   * Covers most of the simple cases without requiring the user to implement  
+   * Covers most of the simple cases without requiring the provider to implement
    * the <code>Shell</code> interface.
    * @param env the map of environment key=value
    * @param cmd shell command to execute.
@@ -434,7 +434,7 @@ abstract public class Shell {
 
   /** 
    * Static method to execute a shell command. 
-   * Covers most of the simple cases without requiring the user to implement  
+   * Covers most of the simple cases without requiring the provider to implement
    * the <code>Shell</code> interface.
    * @param env the map of environment key=value
    * @param cmd shell command to execute.

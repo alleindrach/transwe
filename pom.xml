@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.transwe</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>main</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
 
@@ -25,64 +25,72 @@
     </properties>
     <modules>
         <module>service-facade</module>
-        <module>service-user</module>
+        <module>service-bundle</module>
         <module>service-cache</module>
         <module>web</module>
         <module>job</module>
     </modules>
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <version>2.0.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
+
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-web</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-test</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-aop</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+            <!--</dependency>-->
+
+
 
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>2.0.0.RELEASE</version>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>0.2.0</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-tomcat</artifactId>
-                <version>2.0.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>2.0.0.RELEASE</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-aop</artifactId>
-                <version>2.0.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.dubbo.springboot</groupId>
-                <artifactId>spring-boot-starter-dubbo</artifactId>
-                <version>1.0.0</version>
-            </dependency>
-
             <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-redis</artifactId>
-                <version>2.0.3.RELEASE</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.data</groupId>-->
+                <!--<artifactId>spring-data-redis</artifactId>-->
+                <!--<version>2.0.3.RELEASE</version>-->
+            <!--</dependency>-->
 
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>2.0.0.RELEASE</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-configuration-processor</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+            <!--</dependency>-->
 
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -90,18 +98,18 @@
                 <version>1.3.2</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.session</groupId>
-                <artifactId>spring-session-data-redis</artifactId>
-                <version>2.0.2.RELEASE</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.session</groupId>-->
+                <!--<artifactId>spring-session-data-redis</artifactId>-->
+                <!--<version>2.0.2.RELEASE</version>-->
+            <!--</dependency>-->
 
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-amqp</artifactId>
-                <version>2.0.0.RELEASE</version>
-            </dependency>
+            <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp &ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-amqp</artifactId>-->
+                <!--<version>2.0.0.RELEASE</version>-->
+            <!--</dependency>-->
 
             <dependency>
                 <groupId>mysql</groupId>
@@ -152,6 +160,14 @@
                 <artifactId>lettuce-core</artifactId>
                 <version>5.0.2.RELEASE</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.101tec/zkclient -->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.2</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

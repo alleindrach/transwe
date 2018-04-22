@@ -157,7 +157,7 @@
      DOM elements. If true, the data will be maintained across modal calls, if false,
      the data will be reverted to its original state.
      * modal:			(Boolean:true) User will be unable to interact with the page below the modal or tab away from the dialog.
-     If false, the overlay, iframe, and certain events will be disabled allowing the user to interact
+     If false, the overlay, iframe, and certain events will be disabled allowing the provider to interact
      with the page below the dialog.
      * onOpen:			(Function:null) The callback function used in place of SimpleModal's open
      * onShow:			(Function:null) The callback function used after the modal dialog has opened
@@ -217,7 +217,7 @@
             // $.boxModel is undefined if checked earlier
             ieQuirks = $.browser.msie && !$.boxModel;
 
-            // merge defaults and user options
+            // merge defaults and provider options
             s.o = $.extend({}, $.modal.defaults, options);
 
             // keep track of z-index

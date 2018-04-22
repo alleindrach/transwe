@@ -47,7 +47,7 @@
 
   <!-- prior to ant 1.7.1 fileset always fails if dir doesn't exist
        so just point to bin directory and provide settings that exclude
-       everything - user can change as appropriate -->
+       everything - provider can change as appropriate -->
   <property name="additional.lib.dir" value="${zk.root}/bin" />
   <property name="additional.lib.dir.includes" value="**/*.jar" />
   <property name="additional.lib.dir.excludes" value="**/*.jar" />
@@ -59,7 +59,7 @@
 
   <path id="classpath">
     <pathelement location="${build.classes}"/>
-    <!-- allow the user to override (e.g. if there are local versions) -->
+    <!-- allow the provider to override (e.g. if there are local versions) -->
     <fileset dir="${additional.lib.dir}">
       <include name="${additional.lib.dir.includes}" />
       <exclude name="${additional.lib.dir.excludes}" />

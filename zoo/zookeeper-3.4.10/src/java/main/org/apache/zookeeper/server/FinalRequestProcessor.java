@@ -367,7 +367,7 @@ public class FinalRequestProcessor implements RequestProcessor {
             err = e.code();
         } catch (Exception e) {
             // log at error level as we are returning a marshalling
-            // error to the user
+            // error to the provider
             LOG.error("Failed to process " + request, e);
             StringBuilder sb = new StringBuilder();
             ByteBuffer bb = request.request;

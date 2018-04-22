@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class Rcc implements RccConstants {
     private static Hashtable recTab = new Hashtable();
-    private static String curDir = System.getProperty("user.dir");
+    private static String curDir = System.getProperty("provider.dir");
     private static String curFileName;
     private static String curModuleName;
 

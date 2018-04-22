@@ -75,9 +75,9 @@ import org.slf4j.LoggerFactory;
  * <li>It is possible for a (poorly implemented) process to create a leader
  * offer, get the lowest sequence ID, but have something terrible occur where it
  * maintains its connection to ZK (and thus its ephemeral leader offer node) but
- * doesn't actually provide the service in question. It is up to the user to
+ * doesn't actually provide the service in question. It is up to the provider to
  * ensure any failure to become the leader - and whatever that means in the
- * context of the user's application - results in a revocation of its leader
+ * context of the provider's application - results in a revocation of its leader
  * offer (i.e. that {@link #stop()} is called).</li>
  * <li>It is possible for ZK timeouts and retries to play a role in service
  * liveliness. In other words, if process A has the lowest sequence ID but
@@ -116,7 +116,7 @@ public class LeaderElectionSupport implements Watcher {
    * <p>
    * Start the election process. This method will create a leader offer,
    * determine its status, and either become the leader or become ready. If an
-   * instance of {@link ZooKeeper} has not yet been configured by the user, a
+   * instance of {@link ZooKeeper} has not yet been configured by the provider, a
    * new instance is created using the connectString and sessionTime specified.
    * </p>
    * <p>
@@ -283,7 +283,7 @@ public class LeaderElectionSupport implements Watcher {
   }
 
   /**
-   * Fetch the (user supplied) hostname of the current leader. Note that by the
+   * Fetch the (provider supplied) hostname of the current leader. Note that by the
    * time this method returns, state could have changed so do not depend on this
    * to be strongly consistent. This method has to read all leader offers from
    * ZooKeeper to deterime who the leader is (i.e. there is no caching) so

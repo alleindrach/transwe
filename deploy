@@ -1,0 +1,8 @@
+rm -rf /data/transwe/job/*
+rm -rf /data/transwe/web/*
+rm -rf /data/transwe/service/*
+unzip -q job/target/job-0.0.1.war -d  /data/transwe/job/job
+unzip  -q web/target/web-0.0.1.war -d /data/transwe/web/web
+unzip -q service-cache/target/service-cache-0.0.1.war -d /data/transwe/service/service-cache
+unzip -q service-bundle/target/service-bundle-0.0.1.war -d /data/transwe/service/service-bundle
+

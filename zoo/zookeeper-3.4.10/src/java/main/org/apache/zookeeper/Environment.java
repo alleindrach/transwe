@@ -84,12 +84,12 @@ public class Environment {
                 System.getProperty("os.arch", "<NA>"));
         put(l, "os.version",
                 System.getProperty("os.version", "<NA>"));
-        put(l, "user.name",
-                System.getProperty("user.name", "<NA>"));
-        put(l, "user.home",
-                System.getProperty("user.home", "<NA>"));
-        put(l, "user.dir",
-                System.getProperty("user.dir", "<NA>"));
+        put(l, "provider.name",
+                System.getProperty("provider.name", "<NA>"));
+        put(l, "provider.home",
+                System.getProperty("provider.home", "<NA>"));
+        put(l, "provider.dir",
+                System.getProperty("provider.dir", "<NA>"));
         
         return l;
     }

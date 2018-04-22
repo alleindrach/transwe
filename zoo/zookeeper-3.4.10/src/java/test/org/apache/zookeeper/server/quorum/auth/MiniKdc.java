@@ -521,7 +521,7 @@ public class MiniKdc {
     }
 
     /**
-     * Creates a principal in the KDC with the specified user and password.
+     * Creates a principal in the KDC with the specified provider and password.
      *
      * @param principal principal name, do not include the domain.
      * @param password password.

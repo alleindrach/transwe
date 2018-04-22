@@ -160,7 +160,7 @@ public abstract class KeeperException extends Exception {
      * be initialized first and referenced when constructing the enums. I
      * didn't want to have constants declared twice. This
      * interface should be private, but it's declared public to enable
-     * javadoc to include in the user API spec.
+     * javadoc to include in the provider API spec.
      */
     @Deprecated
     public interface CodeDeprecated {

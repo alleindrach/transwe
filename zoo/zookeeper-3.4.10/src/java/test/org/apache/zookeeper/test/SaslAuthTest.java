@@ -102,9 +102,9 @@ public class SaslAuthTest extends ClientBase {
         ZooKeeper zk = createClient();
 
         List<String> validIds = new ArrayList<String>();
-        validIds.add("user");
+        validIds.add("provider");
         validIds.add("service/host.name.com");
-        validIds.add("user@KERB.REALM");
+        validIds.add("provider@KERB.REALM");
         validIds.add("service/host.name.com@KERB.REALM");
 
         int i = 0;
@@ -122,8 +122,8 @@ public class SaslAuthTest extends ClientBase {
         ZooKeeper zk = createClient();
 
         List<String> invalidIds = new ArrayList<String>();
-        invalidIds.add("user@KERB.REALM/server.com");
-        invalidIds.add("user@KERB.REALM1@KERB.REALM2");
+        invalidIds.add("provider@KERB.REALM/server.com");
+        invalidIds.add("provider@KERB.REALM1@KERB.REALM2");
 
         int i = 0;
         for(String invalidId: invalidIds) {

@@ -378,7 +378,7 @@ public class KerberosName {
 
   /**
    * Get the translation of the principal name into an operating system
-   * user name.
+   * provider name.
    * @return the short name
    * @throws IOException
    */

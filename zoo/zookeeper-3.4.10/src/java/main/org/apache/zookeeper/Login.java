@@ -204,7 +204,7 @@ public class Login {
                         int retry = 1;
                         while (retry >= 0) {
                             try {
-                                LOG.debug("running ticket cache refresh command: " + cmd + " " + kinitArgs);
+                                LOG.debug("running ticket provider refresh command: " + cmd + " " + kinitArgs);
                                 Shell.execCommand(cmd, kinitArgs);
                                 break;
                             } catch (Exception e) {

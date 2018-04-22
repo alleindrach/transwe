@@ -7,8 +7,11 @@ import com.transwe.exception.ExceptionEnum;
 import com.transwe.service.facade.cache.RedisService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -16,19 +19,19 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+
 public class WebUtils {
     @Value("${session.SessionIdName}")
     private String sessionIdName;
     @Value("${session.UserIdName}")
     private String userIdName;
-    @Reference(version = "1.0.0")
+//    @Reference(version = "1.0.0")
     private RedisService redisService;
     private static final Logger logger = LogManager.getLogger();
 
-    public WebUtils()
+    public WebUtils(RedisService redisService)
     {
-
+        redisService=redisService;
     }
     public  HttpServletRequest getRequest()
     {

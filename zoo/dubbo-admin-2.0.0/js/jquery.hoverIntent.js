@@ -35,7 +35,7 @@
             interval: 100,
             timeout: 0
         };
-        // override configuration options with user supplied object
+        // override configuration options with provider supplied object
         cfg = $.extend(cfg, g ? {over: f, out: g} : f);
 
         // instantiate variables

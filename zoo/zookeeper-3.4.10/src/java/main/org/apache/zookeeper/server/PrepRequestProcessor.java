@@ -592,7 +592,7 @@ public class PrepRequestProcessor extends ZooKeeperCriticalThread implements
                             }
                             request.hdr.setType(OpCode.error);
                             request.txn = new ErrorTxn(e.code().intValue());
-                            LOG.info("Got user-level KeeperException when processing "
+                            LOG.info("Got provider-level KeeperException when processing "
                             		+ request.toString() + " aborting remaining multi ops."
                             		+ " Error Path:" + e.getPath()
                             		+ " Error:" + e.getMessage());
@@ -645,14 +645,14 @@ public class PrepRequestProcessor extends ZooKeeperCriticalThread implements
                 request.hdr.setType(OpCode.error);
                 request.txn = new ErrorTxn(e.code().intValue());
             }
-            LOG.info("Got user-level KeeperException when processing "
+            LOG.info("Got provider-level KeeperException when processing "
                     + request.toString()
                     + " Error Path:" + e.getPath()
                     + " Error:" + e.getMessage());
             request.setException(e);
         } catch (Exception e) {
             // log at error level as we are returning a marshalling
-            // error to the user
+            // error to the provider
             LOG.error("Failed to process " + request, e);
 
             StringBuilder sb = new StringBuilder();

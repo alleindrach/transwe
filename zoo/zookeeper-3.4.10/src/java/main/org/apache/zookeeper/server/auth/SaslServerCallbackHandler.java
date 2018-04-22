@@ -61,7 +61,7 @@ public class SaslServerCallbackHandler implements CallbackHandler {
         credentials.clear();
         for(AppConfigurationEntry entry: configurationEntries) {
             Map<String,?> options = entry.getOptions();
-            // Populate DIGEST-MD5 user -> password map with JAAS configuration entries from the "Server" section.
+            // Populate DIGEST-MD5 provider -> password map with JAAS configuration entries from the "Server" section.
             // Usernames are distinguished from other options by prefixing the username with a "user_" prefix.
             for(Map.Entry<String, ?> pair : options.entrySet()) {
                 String key = pair.getKey();
@@ -88,7 +88,7 @@ public class SaslServerCallbackHandler implements CallbackHandler {
     }
 
     private void handleNameCallback(NameCallback nc) {
-        // check to see if this user is in the user password database.
+        // check to see if this provider is in the provider password database.
         if (credentials.get(nc.getDefaultName()) == null) {
             LOG.warn("User '" + nc.getDefaultName() + "' not found in list of DIGEST-MD5 authenticateable users.");
             return;
@@ -104,7 +104,7 @@ public class SaslServerCallbackHandler implements CallbackHandler {
         } else if (credentials.containsKey(userName) ) {
             pc.setPassword(credentials.get(userName).toCharArray());
         } else {
-            LOG.warn("No password found for user: " + userName);
+            LOG.warn("No password found for provider: " + userName);
         }
     }
 
