@@ -24,19 +24,19 @@ services:
             - 20880:20880 
             - 20881:20881
             - 8000:8000
-        volumes:
-             - "/data/transwe/service:/usr/local/tomcat/webapps"
+#        volumes:
+#             - "/data/transwe/service:/usr/local/tomcat/webapps"
     web:
         environment:
             - JPDA_ADDRESS=8000
             - JPDA_TRANSPORT=dt_socket
-            - JPDA_SUSPEND=n
+            - JPDA_SUSPEND=y
         build: ./web
         ports:
             - 8083:8080
             - 8001:8000
-        volumes:
-            - "/data/transwe/web:/usr/local/tomcat/webapps"
+#       volumes:
+#            - "/data/transwe/web:/usr/local/tomcat/webapps"
     job:
         environment:
             - JPDA_ADDRESS=8000
@@ -46,5 +46,5 @@ services:
         ports:
             - 8084:8080
             - 8003:8000
-        volumes:
-            - "/data/transwe/job:/usr/local/tomcat/webapps"
+#       volumes:
+#            - "/data/transwe/job:/usr/local/tomcat/webapps"

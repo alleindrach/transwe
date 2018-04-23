@@ -2,9 +2,10 @@ package com.transwe.entity.user;
 import com.transwe.enumeration.user.UserStateEnum;
 import com.transwe.enumeration.user.UserTypeEnum;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.sql.Timestamp;
-
+@XmlRootElement
 public class UserEntity implements Serializable {
 
     /** 主键 */

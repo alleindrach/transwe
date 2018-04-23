@@ -13,12 +13,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,SessionAutoConfiguration.class})
 //@EnableDubboConfiguration
 //@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60) //1分钟失效 springSessionRepositoryFilter
 @DubboComponentScan("com.transwe.web")
-public class WebControllerLauncher extends SpringBootServletInitializer {
+public class WebControllerLauncher extends SpringBootServletInitializer{
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(WebControllerLauncher.class);
